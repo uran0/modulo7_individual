@@ -30,6 +30,7 @@
     <button type="submit">Agregar Comentario</button>
 </form>
 
+<a href="{% url 'task_edit' task.id %}">Editar Tarea</a>
 <a href="{% url 'bienvenida' %}">Volver a la lista de tareas</a>
 
 {% endblock %}

@@ -71,3 +71,16 @@ def create_task(request):
     else:
         form = TaskForm()
     return render(request, 'create_task.html', {'form': form})
+
+@login_required
+def edit_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    if request.method == 'POST':
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('task_detail', task_id=task.id)
+    else:
+        form = TaskForm(instance=task)
+    
+    return render(request, 'task_edit.html', {'form': form})
