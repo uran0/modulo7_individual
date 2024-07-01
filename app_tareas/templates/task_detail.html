@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Detalle de la Tarea: {{ task.name }}</h1>
+
+<p><strong>Descripción:</strong> {{ task.description }}</p>
+<p><strong>Fecha de vencimiento:</strong> {{ task.expire_date }}</p>
+<p><strong>Estado:</strong> {{ task.get_status_display }}</p>
+<p><strong>Prioridad:</strong> {{ task.priority }}</p>
+<p><strong>Etiqueta:</strong> {{ task.get_tag_display }}</p>
+
+<a href="{% url 'bienvenida' %}">Volver a la lista de tareas</a>
+
+{% endblock %}

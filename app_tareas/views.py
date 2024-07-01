@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from .models import Task
+from forms import TaskForm
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -24,4 +25,23 @@ def logout_view(request):
 
 @login_required
 def bienvenida(request):
-    return render(request, 'bienvenida.html')
+    tasks = Task.objects.filter(user=request.user)
+    return render(request, 'bienvenida.html', {'tasks': tasks})
+
+@login_required
+def task_detail(request, task_id):
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    return render(request, 'task_detail.html', {'task': task})
+
+@login_required
+def create_task(request):
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            task = form.save(commit=False)
+            task.user = request.user
+            task.save()
+            return redirect('bienvenida')
+    else:
+        form = TaskForm()
+    return render(request, 'create_task.html', {'form': form})
