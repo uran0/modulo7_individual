@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+/* Estilo general */
+body {
+    font-family:  'Plus Jakarta Sans', sans-serif;;
+    background-color: #F2E394; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header */
+h2 {
+    background-color: #588C73; 
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+/* Contenedor contenido */
+.div-princ {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+
+/* Botones... algunos */
+button {
+    background: #D96459; 
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+button:hover {
+    background: #588C73;
+}
+
+/* Form */
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input:focus, textarea:focus {
+    border-color: #588C73;
+}
+
+/* Block content - endblock */
+
+.content {
+    padding: 20px;
+    background-color: #F2E394; 
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 80%;
+}
+
+.contenedor-imagen {
+    margin: 0 auto 20px;
+}
+
+.mi-img {
+    display: inline-block;
+    width: 400px;
+    height: auto;
+    margin: 0 auto 20px;
+    border-radius: 8px;
+}
+
+/* BOTON INICIO SESION INDEX */
+.btn-iniciar-sesion {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #F2AE72;
+    color: #ffffff; 
+    font-size: 40px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo cuando se pasa el cursor sobre el botón */
+.btn-iniciar-sesion:hover {
+    background-color: #588C73; /* cambiar de color */
+}
+
+/* LOGIN */
+.main-login {
+    margin: auto;
+    max-width: 40%;
+}

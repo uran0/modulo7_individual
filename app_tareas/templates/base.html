@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APP de TAREAS</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h2>Organizador de Tareas</h2>
+    <div class="div-princ">
+        <p class="descripcion">¡Bienvenida/o a nuestra Aplicación de Tareas! En este espacio podrás explorar tus tareas pendientes y realizadas para gestionar tu productividad.</p>
+    </div>
+    <div class="content">
+    {% block content %}
+    {% endblock %}  
+    </div>  
+</body>
+</html>

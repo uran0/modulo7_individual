@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="main-index">
+    <h1>¡Es hora de simplificar tu vida y conquistar tus objetivos con nuestra aplicación de tareas!</h1>
+    <div class="contenedor-imagen">
+        <img src="https://images.pexels.com/photos/20279300/pexels-photo-20279300/free-photo-of-lista-de-verificacion-digital-imagen-icono.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Logo" class="mi-img">       
+    </div>
+<a href="{% url 'login' %}" class="btn-iniciar-sesion">Iniciar Sesión</a>
+</div>
+{% endblock %}
