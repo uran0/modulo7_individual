@@ -48,3 +48,7 @@ class Task(models.Model):
             models.Index(fields=['name']),
         ]
 
+class Comments(models.Model):
+    content=models.TextField(null=False,blank=False,default="")
+    publishing_date=models.DateTimeField(blank=False,null=False,default=now)
+    task=models.ForeignKey(Task,on_delete=models.CASCADE)

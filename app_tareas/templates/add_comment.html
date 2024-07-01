@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Agregar Comentario a la Tarea: {{ task.name }}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Agregar Comentario</button>
+</form>
+
+<a href="{% url 'task_detail' task.id %}">Cancelar</a>
+
+{% endblock %}

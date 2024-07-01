@@ -10,6 +10,26 @@
 <p><strong>Prioridad:</strong> {{ task.priority }}</p>
 <p><strong>Etiqueta:</strong> {{ task.get_tag_display }}</p>
 
+
+<h2>Comentarios:</h2>
+<ul>
+    {% for comment in comments %}
+        <li>
+            <p>{{ comment.content }}</p>
+            <small>Publicado el {{ comment.publishing_date }}</small>
+        </li>
+    {% empty %}
+        <li>No hay comentarios aún.</li>
+    {% endfor %}
+</ul>
+
+<h2>Agregar Comentario:</h2>
+<form method="post" action="{% url 'add_comment' task.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Agregar Comentario</button>
+</form>
+
 <a href="{% url 'bienvenida' %}">Volver a la lista de tareas</a>
 
 {% endblock %}

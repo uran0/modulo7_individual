@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .models import Task
-from forms import TaskForm
+from .models import Task, Comments
+from forms import TaskForm, CommentForm
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -31,7 +31,33 @@ def bienvenida(request):
 @login_required
 def task_detail(request, task_id):
     task = get_object_or_404(Task, id=task_id, user=request.user)
+    comments = Comments.objects.filter(task=task).order_by('-publishing_date')
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.task = task
+            comment.save()
+            return redirect('task_detail, task_id=task.id')
+    else:
+        form = CommentForm()
+
     return render(request, 'task_detail.html', {'task': task})
+
+@login_required
+def add_comment(request, task_id):
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.task = task
+            comment.save()
+            return redirect('task_detail', task_id=task.id)
+    else:
+        form = CommentForm()
+    
+    return render(request, 'add_comment.html', {'form': form})
 
 @login_required
 def create_task(request):
